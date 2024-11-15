@@ -27,7 +27,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:contentDescription="Add Crop"
-                android:src="@drawable/ic_add" />
+                android:src="@drawable/add" />
         </LinearLayout>
 
     </ScrollView>
@@ -48,9 +48,10 @@
             android:layout_height="60dp"
             android:layout_weight="1"
             android:background="?android:attr/selectableItemBackground"
-            android:contentDescription="Crop Monitoring"
+            android:contentDescription="Crop"
             android:padding="10dp"
-            android:src="@drawable/ic_crop" />
+            android:src="@drawable/icon_monitor"
+            android:scaleType="fitCenter" />
 
         <ImageButton
             android:id="@+id/navItem2"
@@ -58,9 +59,10 @@
             android:layout_height="60dp"
             android:layout_weight="1"
             android:background="?android:attr/selectableItemBackground"
-            android:contentDescription="Watering"
+            android:contentDescription="Inventory"
             android:padding="10dp"
-            android:src="@drawable/ic_water" />
+            android:src="@drawable/icon_warehouse"
+            android:scaleType="fitCenter"/>
 
         <ImageButton
             android:id="@+id/navItem3"
@@ -68,9 +70,10 @@
             android:layout_height="60dp"
             android:layout_weight="1"
             android:background="?android:attr/selectableItemBackground"
-            android:contentDescription="Sun Exposure"
+            android:contentDescription="task"
             android:padding="10dp"
-            android:src="@drawable/ic_sun" />
+            android:src="@drawable/icon_calendar"
+            android:scaleType="fitCenter"/>
 
         <ImageButton
             android:id="@+id/navItem4"
@@ -78,9 +81,10 @@
             android:layout_height="60dp"
             android:layout_weight="1"
             android:background="?android:attr/selectableItemBackground"
-            android:contentDescription="Fertilizing"
+            android:contentDescription="income"
             android:padding="10dp"
-            android:src="@drawable/ic_fertilizer" />
+            android:src="@drawable/icon_income"
+            android:scaleType="fitCenter"/>
 
         <ImageButton
             android:id="@+id/navItem5"
@@ -88,9 +92,10 @@
             android:layout_height="60dp"
             android:layout_weight="1"
             android:background="?android:attr/selectableItemBackground"
-            android:contentDescription="Alerts"
+            android:contentDescription="map"
             android:padding="10dp"
-            android:src="@drawable/ic_alert" />
+            android:src="@drawable/icon_map"
+            android:scaleType="fitCenter"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
