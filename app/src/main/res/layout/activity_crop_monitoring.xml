@@ -1,17 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".crop_monitoring_Activity">
 
+    <!-- 顶部栏 -->
+    <LinearLayout
+        android:id="@+id/topBar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:orientation="horizontal"
+        android:background="#ADD8E6"
+        android:gravity="center_vertical"
+        app:layout_constraintTop_toTopOf="parent">
 
+        <ImageButton
+            android:id="@+id/backButton"
+            android:layout_width="35dp"
+            android:layout_height="38dp"
+            android:layout_marginStart="8dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:contentDescription="Back"
+            android:scaleType="fitCenter"
+            android:src="@drawable/icon_back" />
+
+        <TextView
+            android:id="@+id/topBarTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="Crop Monitoring"
+            android:textSize="18sp"
+            android:textColor="#000000"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- 可滚动区域 -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@id/bottomNavBar"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/topBar"          app:layout_constraintBottom_toTopOf="@id/bottomNavBar">
 
         <LinearLayout
             android:id="@+id/cropLayout"
@@ -19,19 +50,77 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="10dp">
-            <!-- 初始的加号图片 -->
+
+            <!-- 第一张图片 -->
             <ImageView
-                android:id="@+id/initialAddCrop"
+                android:id="@+id/tomato"
                 android:layout_width="match_parent"
                 android:layout_height="115dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
-                android:contentDescription="Add Crop"
-                android:src="@drawable/add" />
-        </LinearLayout>
+                android:contentDescription="tomato"
+                android:scaleType="centerCrop"
+                android:src="@drawable/tomato" />
 
+            <!-- 第二张图片 -->
+            <ImageView
+                android:id="@+id/potato"
+                android:layout_width="match_parent"
+                android:layout_height="115dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:contentDescription="potato"
+                android:scaleType="centerCrop"
+                android:src="@drawable/potato" />
+
+            <!-- 第三张图片 -->
+            <ImageView
+                android:id="@+id/apple"
+                android:layout_width="match_parent"
+                android:layout_height="115dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:contentDescription="apple"
+                android:scaleType="centerCrop"
+                android:src="@drawable/apple" />
+
+            <!-- 第四张图片 -->
+            <ImageView
+                android:id="@+id/cabbage"
+                android:layout_width="match_parent"
+                android:layout_height="115dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:contentDescription="cabbage"
+                android:scaleType="centerCrop"
+                android:src="@drawable/cabbage" />
+
+            <!-- 第五张图片 -->
+            <ImageView
+                android:id="@+id/carrot"
+                android:layout_width="match_parent"
+                android:layout_height="115dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:contentDescription="carrot"
+                android:scaleType="centerCrop"
+                android:src="@drawable/carrot" />
+
+            <!-- 第六张图片 -->
+            <ImageView
+                android:id="@+id/pineapple"
+                android:layout_width="match_parent"
+                android:layout_height="115dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:contentDescription="pineapple"
+                android:scaleType="centerCrop"
+                android:src="@drawable/pineapple" />
+
+        </LinearLayout>
     </ScrollView>
 
+    <!-- 底部导航栏 -->
     <LinearLayout
         android:id="@+id/bottomNavBar"
         android:layout_width="match_parent"
