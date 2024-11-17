@@ -1,8 +1,7 @@
-Orchard management system
+# Orchard Management System
 
-draft:
-1.Crop monitoring
-  main page: finished
-  crop detail page: finished
-  demand inormation page: finished
-  history page:
+## 1. Crop Monitoring
+- **Main Page:** Finished
+- **Crop Detail Page:** Finished
+- **Demand Information Page:** Finished
+- **History Page:** 
