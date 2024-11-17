@@ -29,6 +29,10 @@
             android:name=".CropDetailActivity"
             android:exported="true" />
 
+        <activity
+            android:name=".DemandInformationActivity"
+            android:exported="true" />
+
     </application>
 
 </manifest>

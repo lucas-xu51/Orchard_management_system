@@ -1,6 +1,7 @@
 package com.example.orchardmanagementsystem;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -66,6 +67,14 @@ public class CropDetailActivity extends AppCompatActivity {
 
         // 设置点击 Edit 按钮打开编辑健康状态对话框
         editHealthStateButton.setOnClickListener(v -> openEditHealthStateDialog());
+
+        Button demandInformationButton = findViewById(R.id.demandInfoButton);
+        demandInformationButton.setOnClickListener(v -> {
+            // 创建 Intent 跳转到 DemandInformationActivity
+            Intent intent = new Intent(CropDetailActivity.this, DemandInformationActivity.class);
+            intent.putExtra("cropName", cropName);
+            startActivity(intent);
+        });
     }
 
     /**

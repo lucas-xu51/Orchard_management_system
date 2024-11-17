@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="8"
         android:text="Sample Information"
-        android:textSize="16sp"
+        android:textSize="20sp"
         android:paddingEnd="10dp"/>
 
     <!-- 编辑按钮 -->
@@ -27,7 +27,8 @@
         android:layout_height="40dp"
         android:background="?android:attr/selectableItemBackground"
         android:contentDescription="Edit"
-        android:src="@drawable/ic_edit" />
+        android:src="@drawable/icon_edit"
+        android:scaleType="centerCrop"/>
 
     <ImageButton
         android:id="@+id/deleteButton"
@@ -35,5 +36,6 @@
         android:layout_height="40dp"
         android:background="?android:attr/selectableItemBackground"
         android:contentDescription="Delete"
-        android:src="@drawable/ic_delete" />
+        android:src="@drawable/icon_delete"
+        android:scaleType="centerCrop"/>
 </LinearLayout>

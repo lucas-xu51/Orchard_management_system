@@ -51,5 +51,6 @@
         android:src="@drawable/icon_add"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:scaleType="fitCenter"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
