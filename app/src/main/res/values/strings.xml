@@ -1,3 +1,25 @@
 <resources>
     <string name="app_name">Orchard management system</string>
+
+    <!-- Lucas 各作物的具体数据 -->
+    <string name="planting_date_label">Planting Date</string>
+    <string name="health_state_label">Health State</string>
+
+    <string name="tomato_planting_date">2023–03–15</string>
+    <string name="tomato_health_state">Healthy</string>
+
+    <string name="potato_planting_date">2023–04–01</string>
+    <string name="potato_health_state">Moderate</string>
+
+    <string name="apple_planting_date">2022–09–20</string>
+    <string name="apple_health_state">Good</string>
+
+    <string name="cabbage_planting_date">2023–05–10</string>
+    <string name="cabbage_health_state">Poor</string>
+
+    <string name="carrot_planting_date">2023–06–25</string>
+    <string name="carrot_health_state">Healthy</string>
+
+    <string name="pineapple_planting_date">2023–07–05</string>
+    <string name="pineapple_health_state">Excellent</string>
 </resources>

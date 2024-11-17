@@ -165,17 +165,6 @@
             android:scaleType="fitCenter"/>
 
         <ImageButton
-            android:id="@+id/navItem4"
-            android:layout_width="0dp"
-            android:layout_height="60dp"
-            android:layout_weight="1"
-            android:background="?android:attr/selectableItemBackground"
-            android:contentDescription="income"
-            android:padding="10dp"
-            android:src="@drawable/icon_income"
-            android:scaleType="fitCenter"/>
-
-        <ImageButton
             android:id="@+id/navItem5"
             android:layout_width="0dp"
             android:layout_height="60dp"
