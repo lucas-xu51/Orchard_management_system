@@ -1,9 +1,11 @@
 package com.example.orchardmanagementsystem;
 
+import android.app.DatePickerDialog;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -13,11 +15,14 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.Calendar;
+
 public class CropDetailActivity extends AppCompatActivity {
 
     private String cropName; // 作物名称
-    private SharedPreferences sharedPreferences; // 用于存储健康状态
+    private SharedPreferences sharedPreferences; // 用于存储健康状态和种植日期
     private TextView healthStateTextView; // 健康状态文本
+    private TextView plantingDateTextView; // 种植日期文本
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +39,9 @@ public class CropDetailActivity extends AppCompatActivity {
         // 初始化视图
         ImageView cropImage = findViewById(R.id.cropImage);
         ImageView tableImage = findViewById(R.id.tableImage);
-        TextView plantingDate = findViewById(R.id.plantingDate);
+        plantingDateTextView = findViewById(R.id.plantingDate);
         healthStateTextView = findViewById(R.id.healthState);
+        Button editPlantingDateButton = findViewById(R.id.editPlantingDateButton);
         Button editHealthStateButton = findViewById(R.id.editHealthStateButton);
 
         // 初始化 SharedPreferences
@@ -47,15 +53,18 @@ public class CropDetailActivity extends AppCompatActivity {
 
         tableImage.setImageResource(R.drawable.crop_chart); // 假设表格图片是固定的
 
-        // 从字符串资源文件加载种植日期
-        int plantingDateRes = getResources().getIdentifier(cropName.toLowerCase() + "_planting_date", "string", getPackageName());
-        plantingDate.setText(getString(R.string.planting_date_label) + ": " + getString(plantingDateRes));
+        // 加载保存的种植日期或设置默认值
+        String savedPlantingDate = getSavedPlantingDate();
+        plantingDateTextView.setText(getString(R.string.planting_date_label) + ": " + savedPlantingDate);
 
         // 加载保存的健康状态或设置默认值
         String savedHealthState = getSavedHealthState();
         healthStateTextView.setText(getString(R.string.health_state_label) + ": " + savedHealthState);
 
-        // 设置点击 Edit 按钮打开编辑对话框
+        // 设置点击 Edit 按钮打开日期选择器
+        editPlantingDateButton.setOnClickListener(v -> openDatePickerDialog());
+
+        // 设置点击 Edit 按钮打开编辑健康状态对话框
         editHealthStateButton.setOnClickListener(v -> openEditHealthStateDialog());
     }
 
@@ -65,6 +74,14 @@ public class CropDetailActivity extends AppCompatActivity {
     private String getSavedHealthState() {
         String healthStateKey = "healthState_" + cropName;
         return sharedPreferences.getString(healthStateKey, "Unknown");
+    }
+
+    /**
+     * 获取保存的种植日期
+     */
+    private String getSavedPlantingDate() {
+        String plantingDateKey = "plantingDate_" + cropName;
+        return sharedPreferences.getString(plantingDateKey, "Not set");
     }
 
     /**
@@ -100,12 +117,45 @@ public class CropDetailActivity extends AppCompatActivity {
     }
 
     /**
+     * 打开日期选择器对话框
+     */
+    private void openDatePickerDialog() {
+        final Calendar calendar = Calendar.getInstance();
+
+        // 获取当前日期
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+        // 创建日期选择器
+        DatePickerDialog datePickerDialog = new DatePickerDialog(this, (view, selectedYear, selectedMonth, selectedDay) -> {
+            // 格式化日期
+            String selectedDate = selectedYear + "-" + (selectedMonth + 1) + "-" + selectedDay;
+            savePlantingDate(selectedDate);
+            plantingDateTextView.setText(getString(R.string.planting_date_label) + ": " + selectedDate);
+            Toast.makeText(this, "Planting Date updated for " + cropName, Toast.LENGTH_SHORT).show();
+        }, year, month, day);
+
+        datePickerDialog.show();
+    }
+
+    /**
      * 保存健康状态到 SharedPreferences
      */
     private void saveHealthState(String healthState) {
         String healthStateKey = "healthState_" + cropName;
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(healthStateKey, healthState);
+        editor.apply();
+    }
+
+    /**
+     * 保存种植日期到 SharedPreferences
+     */
+    private void savePlantingDate(String plantingDate) {
+        String plantingDateKey = "plantingDate_" + cropName;
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(plantingDateKey, plantingDate);
         editor.apply();
     }
 }

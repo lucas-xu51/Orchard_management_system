@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="10dp"
+    android:layout_marginBottom="10dp"
+    android:background="?android:attr/selectableItemBackground"
+    android:weightSum="10">
+
+    <!-- 信息内容 -->
+    <TextView
+        android:id="@+id/infoText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="8"
+        android:text="Sample Information"
+        android:textSize="16sp"
+        android:paddingEnd="10dp"/>
+
+    <!-- 编辑按钮 -->
+
+    <!-- 删除按钮 -->
+    <ImageButton
+        android:id="@+id/editButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:contentDescription="Edit"
+        android:src="@drawable/ic_edit" />
+
+    <ImageButton
+        android:id="@+id/deleteButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:contentDescription="Delete"
+        android:src="@drawable/ic_delete" />
+</LinearLayout>
