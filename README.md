@@ -6,7 +6,7 @@
 - **Demand Information Page:** Finished
 - **History Page:** 
 
-## 顶部栏xml代码
+顶部栏xml代码
 
 <LinearLayout
         android:id="@+id/topBar"
@@ -26,4 +26,4 @@
             android:contentDescription="Back"
             android:scaleType="fitCenter"
             android:src="@drawable/icon_back" />
-    </LinearLayout>
+</LinearLayout>
