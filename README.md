@@ -7,7 +7,7 @@
 - **History Page:** 
 
 ## 固定代码
-- **顶部栏+back按钮xml代码**
+- **顶部栏+back按钮xml代码（如果用linear layout）**
 
     <LinearLayout
         android:id="@+id/topBar"
