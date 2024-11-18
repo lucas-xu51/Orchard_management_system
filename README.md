@@ -6,8 +6,8 @@
 - **Demand Information Page:** Finished
 - **History Page:** Finished
 
-## 固定代码
-- **顶部栏+back按钮xml代码（如果用linear layout）**
+## 固定代码（如果用linear layout）
+- **顶部栏+back按钮xml代码**
 
         <LinearLayout
             android:id="@+id/topBar"
