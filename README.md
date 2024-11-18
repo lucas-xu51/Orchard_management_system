@@ -8,7 +8,7 @@
 
 顶部栏xml代码
 
-<LinearLayout
+    <LinearLayout
         android:id="@+id/topBar"
         android:layout_width="match_parent"
         android:layout_height="56dp"
@@ -26,4 +26,4 @@
             android:contentDescription="Back"
             android:scaleType="fitCenter"
             android:src="@drawable/icon_back" />
-</LinearLayout>
+    </LinearLayout>
