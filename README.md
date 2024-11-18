@@ -7,6 +7,7 @@
 - **History Page:** 
 
 ## 顶部栏xml代码
+
 <LinearLayout
         android:id="@+id/topBar"
         android:layout_width="match_parent"
