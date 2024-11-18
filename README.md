@@ -17,7 +17,6 @@
         android:background="#ADD8E6"
         android:gravity="center_vertical"
         app:layout_constraintTop_toTopOf="parent">
-
         <ImageButton
             android:id="@+id/backButton"
             android:layout_width="35dp"
