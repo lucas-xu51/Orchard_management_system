@@ -29,7 +29,7 @@
             android:src="@drawable/icon_back" />
     </LinearLayout>
 
-    - **底部导航栏代码**
+- **底部导航栏代码**
 
       <LinearLayout
         android:id="@+id/bottomNavBar"
