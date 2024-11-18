@@ -26,6 +26,16 @@
             android:contentDescription="Back"
             android:scaleType="fitCenter"
             android:src="@drawable/icon_back" />
+
+        <TextView
+            android:id="@+id/topBarTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="Demand information"
+            android:textSize="18sp"
+            android:textColor="#000000"
+            android:textStyle="bold" />
     </LinearLayout>
 
     <!-- 列表区域 -->
