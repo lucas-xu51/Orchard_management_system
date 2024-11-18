@@ -87,5 +87,5 @@
             android:padding="10dp"
             android:src="@drawable/icon_map"
             android:scaleType="fitCenter"/>
-    </LinearLayout>
+        </LinearLayout>
 
