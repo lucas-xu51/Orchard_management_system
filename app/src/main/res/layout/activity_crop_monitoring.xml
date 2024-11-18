@@ -51,7 +51,6 @@
             android:orientation="vertical"
             android:padding="10dp">
 
-            <!-- 第一张图片 -->
             <ImageView
                 android:id="@+id/tomato"
                 android:layout_width="match_parent"
@@ -62,7 +61,6 @@
                 android:scaleType="centerCrop"
                 android:src="@drawable/tomato" />
 
-            <!-- 第二张图片 -->
             <ImageView
                 android:id="@+id/potato"
                 android:layout_width="match_parent"
@@ -73,7 +71,6 @@
                 android:scaleType="centerCrop"
                 android:src="@drawable/potato" />
 
-            <!-- 第三张图片 -->
             <ImageView
                 android:id="@+id/apple"
                 android:layout_width="match_parent"
@@ -84,7 +81,6 @@
                 android:scaleType="centerCrop"
                 android:src="@drawable/apple" />
 
-            <!-- 第四张图片 -->
             <ImageView
                 android:id="@+id/cabbage"
                 android:layout_width="match_parent"
@@ -95,7 +91,6 @@
                 android:scaleType="centerCrop"
                 android:src="@drawable/cabbage" />
 
-            <!-- 第五张图片 -->
             <ImageView
                 android:id="@+id/carrot"
                 android:layout_width="match_parent"
@@ -106,7 +101,6 @@
                 android:scaleType="centerCrop"
                 android:src="@drawable/carrot" />
 
-            <!-- 第六张图片 -->
             <ImageView
                 android:id="@+id/pineapple"
                 android:layout_width="match_parent"
