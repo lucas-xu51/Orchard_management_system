@@ -75,6 +75,13 @@ public class CropDetailActivity extends AppCompatActivity {
             intent.putExtra("cropName", cropName);
             startActivity(intent);
         });
+
+        Button historyButton = findViewById(R.id.historyButton);
+        historyButton.setOnClickListener(v -> {
+            Intent intent = new Intent(CropDetailActivity.this, HistoryActivity.class);
+            intent.putExtra("cropName", cropName);
+            startActivity(intent);
+        });
     }
 
     /**
