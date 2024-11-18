@@ -10,7 +10,7 @@
 - **顶部栏+back按钮xml代码（如果用linear layout）**
 
     <LinearLayout
-        android:id="@+id/topBar"
+      android:id="@+id/topBar"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:orientation="horizontal"
