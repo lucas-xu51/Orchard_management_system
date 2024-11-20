@@ -37,6 +37,13 @@ public class CropDetailActivity extends AppCompatActivity {
         ImageButton backButton = findViewById(R.id.backButton);
         backButton.setOnClickListener(v -> finish());
 
+        ImageButton menuButton = findViewById(R.id.menuButton);
+        menuButton.setOnClickListener(v -> {
+            Intent intent = new Intent(CropDetailActivity.this, mainActivity.class);
+            startActivity(intent);
+            finish(); // Optional: Close current activity after starting MainActivity
+        });
+
         // 初始化视图
         ImageView cropImage = findViewById(R.id.cropImage);
         ImageView tableImage = findViewById(R.id.tableImage);
