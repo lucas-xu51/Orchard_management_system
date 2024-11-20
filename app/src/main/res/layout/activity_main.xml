@@ -1,0 +1,82 @@
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context=".mainActivity">
+
+    <!-- 第一个按钮 -->
+
+    <!-- 第二个按钮 -->
+
+    <Button
+        android:id="@+id/firstBlock"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@android:color/white"
+        android:gravity="center"
+        android:text="Crop Monitoring"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:layout_marginTop="500dp"
+        app:layout_constraintBottom_toTopOf="@id/thirdBlock"
+        app:layout_constraintEnd_toStartOf="@id/secondBlock"
+        app:layout_constraintHeight_percent="0.1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.45" />
+
+    <Button
+        android:id="@+id/secondBlock"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@android:color/white"
+        android:gravity="center"
+        android:text="Block 2"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:layout_marginTop="500dp"
+        app:layout_constraintWidth_percent="0.45"
+        app:layout_constraintHeight_percent="0.1"
+        app:layout_constraintStart_toEndOf="@id/firstBlock"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/fourthBlock"/>
+
+    <!-- 第三个按钮 -->
+    <Button
+        android:id="@+id/thirdBlock"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@android:color/white"
+        android:gravity="center"
+        android:text="Block 3"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        app:layout_constraintWidth_percent="0.45"
+        app:layout_constraintHeight_percent="0.1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/firstBlock"
+        app:layout_constraintEnd_toStartOf="@id/fourthBlock"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <!-- 第四个按钮 -->
+    <Button
+        android:id="@+id/fourthBlock"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@android:color/white"
+        android:gravity="center"
+        android:text="Block 4"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        app:layout_constraintWidth_percent="0.45"
+        app:layout_constraintHeight_percent="0.1"
+        app:layout_constraintStart_toEndOf="@id/thirdBlock"
+        app:layout_constraintTop_toBottomOf="@id/secondBlock"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
