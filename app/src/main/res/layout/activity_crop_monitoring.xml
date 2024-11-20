@@ -44,7 +44,7 @@ app:layout_constraintBottom_toTopOf="@id/bottomNavBar">
     android:padding="10dp">
 
     <ImageView
-        android:id="@+id/tomato"
+        android:id="@+id/Tomato"
         android:layout_width="match_parent"
         android:layout_height="115dp"
         android:layout_marginTop="10dp"
