@@ -37,6 +37,24 @@
             android:textSize="18sp"
             android:textColor="#FFFFFF"
             android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/topBarTitle1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_weight="1"
+            android:textSize="18sp"/>
+
+        <ImageButton
+            android:id="@+id/menuButton"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginEnd="8dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:contentDescription="Menu"
+            android:src="@drawable/icon_home"
+            android:scaleType="fitCenter" />
     </LinearLayout>
 
     <!-- 列表区域 -->

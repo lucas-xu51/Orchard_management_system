@@ -1,5 +1,6 @@
 package com.example.orchardmanagementsystem;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -35,6 +36,13 @@ public class DemandInformationActivity extends AppCompatActivity {
         ImageButton backButton = findViewById(R.id.backButton);
         ImageButton addInfoButton = findViewById(R.id.addInfoButton);
         infoListLayout = findViewById(R.id.infoList);
+
+        ImageButton menuButton = findViewById(R.id.menuButton);
+        menuButton.setOnClickListener(v -> {
+            Intent intent = new Intent(DemandInformationActivity.this, mainActivity.class);
+            startActivity(intent);
+            finish(); // Optional: Close current activity after starting MainActivity
+        });
 
         // 初始化 SharedPreferences
         sharedPreferences = getSharedPreferences(INFO_PREFS, MODE_PRIVATE);

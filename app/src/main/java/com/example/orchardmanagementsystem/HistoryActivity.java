@@ -1,5 +1,6 @@
 package com.example.orchardmanagementsystem;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -38,6 +39,13 @@ public class HistoryActivity extends AppCompatActivity {
         // 设置返回按钮
         ImageButton backButton = findViewById(R.id.backButton);
         backButton.setOnClickListener(v -> finish());
+
+        ImageButton menuButton = findViewById(R.id.menuButton);
+        menuButton.setOnClickListener(v -> {
+            Intent intent = new Intent(HistoryActivity.this, mainActivity.class);
+            startActivity(intent);
+            finish(); // Optional: Close current activity after starting MainActivity
+        });
 
         // 加载并显示历史记录
         loadHistory();
