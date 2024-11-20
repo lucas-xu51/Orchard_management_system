@@ -12,34 +12,30 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.OrchardManagementSystem"
         tools:targetApi="31">
-
+        <activity
+            android:name=".Inventory_Management"
+            android:exported="false" />
         <activity
             android:name=".mainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".crop_monitoring_Activity"
-            android:exported="true">
-
-        </activity>
-
+            android:exported="true"></activity>
         <activity
             android:name=".CropDetailActivity"
             android:exported="true" />
-
         <activity
             android:name=".DemandInformationActivity"
             android:exported="true" />
-
         <activity
             android:name=".HistoryActivity"
             android:exported="true" />
-
     </application>
 
 </manifest>
