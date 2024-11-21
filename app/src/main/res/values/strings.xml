@@ -22,4 +22,22 @@
 
     <string name="pineapple_planting_date">2023–07–05</string>
     <string name="pineapple_health_state">Excellent</string>
+
+    <!-- 项目名称 -->
+    <string name="item_tomato">Tomato</string>
+    <string name="item_potato">Potato</string>
+    <string name="item_apple">Apple</string>
+    <string name="item_cabbage">Cabbage</string>
+    <string name="item_carrot">Carrot</string>
+    <string name="item_pineapple">Pineapple</string>
+
+
+    <!-- 项目数量 -->
+    <string name="quantity_tomato">1</string>
+    <string name="quantity_potato">3</string>
+    <string name="quantity_apple">5</string>
+    <string name="quantity_cabbage">2</string>
+    <string name="quantity_carrot">4</string>
+    <string name="quantity_pineapple">6</string>
+
 </resources>

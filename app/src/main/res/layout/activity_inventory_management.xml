@@ -27,11 +27,14 @@
             android:textStyle="bold" />
     </LinearLayout>
 
+
     <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_width="402dp"
+        android:layout_height="503dp"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavBar"
         app:layout_constraintTop_toBottomOf="@id/topBar"
-        app:layout_constraintBottom_toTopOf="@id/bottomNavBar">
+        app:layout_constraintVertical_bias="0.901"
+        tools:layout_editor_absoluteX="0dp">
 
         <GridLayout
             android:id="@+id/cropLayout"
@@ -44,8 +47,8 @@
                 android:id="@+id/Tomato"
                 android:layout_width="0dp"
                 android:layout_height="150dp"
-                android:layout_columnWeight="1"
                 android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
                 android:layout_margin="4dp"
                 android:adjustViewBounds="true"
                 android:scaleType="centerCrop"
@@ -67,8 +70,8 @@
                 android:id="@+id/Apple"
                 android:layout_width="0dp"
                 android:layout_height="150dp"
-                android:layout_columnWeight="1"
                 android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
                 android:layout_margin="4dp"
                 android:adjustViewBounds="true"
                 android:scaleType="centerCrop"
@@ -78,8 +81,8 @@
                 android:id="@+id/Cabbage"
                 android:layout_width="0dp"
                 android:layout_height="150dp"
-                android:layout_columnWeight="1"
                 android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
                 android:layout_margin="4dp"
                 android:adjustViewBounds="true"
                 android:scaleType="centerCrop"
@@ -89,8 +92,8 @@
                 android:id="@+id/Carrot"
                 android:layout_width="0dp"
                 android:layout_height="150dp"
-                android:layout_columnWeight="1"
                 android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
                 android:layout_margin="4dp"
                 android:adjustViewBounds="true"
                 android:scaleType="centerCrop"
@@ -100,8 +103,8 @@
                 android:id="@+id/Pineapple"
                 android:layout_width="0dp"
                 android:layout_height="150dp"
-                android:layout_columnWeight="1"
                 android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
                 android:layout_margin="4dp"
                 android:adjustViewBounds="true"
                 android:scaleType="centerCrop"
@@ -109,7 +112,6 @@
 
         </GridLayout>
     </ScrollView>
-
 
     <LinearLayout
         android:id="@+id/bottomNavBar"
@@ -165,4 +167,18 @@
             android:scaleType="fitCenter"
             android:src="@drawable/icon_map" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="There are the following crop seeds in our warehouse"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.101" />
 </androidx.constraintlayout.widget.ConstraintLayout>
