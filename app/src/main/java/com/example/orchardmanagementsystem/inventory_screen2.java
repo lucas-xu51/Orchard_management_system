@@ -5,11 +5,13 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class inventory_screen2 extends AppCompatActivity {
     private HashMap<String, Integer> itemData; // 存储项目名称和数量
@@ -29,22 +31,37 @@ public class inventory_screen2 extends AppCompatActivity {
         itemData.put("Carrot", 4);
         itemData.put("Pineapple", 6);
 
-        // 接收来自 inventory_update 的更新数据
-        Intent intent = getIntent();
-        String itemName = intent.getStringExtra("item_name");
-        int updatedQuantity = intent.getIntExtra("updated_quantity", -1);
-
-        if (itemName != null && updatedQuantity != -1) {
-            itemData.put(itemName, updatedQuantity); // 更新数量
-        }
-
         // 设置返回按钮
-        ImageView backButton = findViewById(R.id.imageView2); // 替换为您的返回按钮 ID
+        ImageView backButton = findViewById(R.id.imageView2);
         backButton.setOnClickListener(v -> finish());
 
         // 设置每个 LinearLayout 的点击事件
         setupItemClickListeners();
+        loadCropQuantities();
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        loadCropQuantities(); // 在每次页面可见时加载最新数据
+    }
+
+    private void loadCropQuantities() {
+        // 遍历 Inventory_Management.cropQuantities 并显示数据
+        for (Map.Entry<String, Integer> entry : Inventory_Management.cropQuantities.entrySet()) {
+            String cropName = entry.getKey();
+            int quantity = entry.getValue();
+
+            // 动态更新 TextView，假设每个作物有对应的 TextView ID
+            int textViewId = getResources().getIdentifier(cropName.toLowerCase() + "_quantity", "id", getPackageName());
+            TextView quantityTextView = findViewById(textViewId);
+
+            if (quantityTextView != null) {
+                quantityTextView.setText("Quantity: " + quantity);
+            }
+        }
+    }
+
 
     private void setupItemClickListeners() {
         setupClickListener(R.id.tomato_layout, "Tomato");
@@ -61,7 +78,30 @@ public class inventory_screen2 extends AppCompatActivity {
             Intent intent = new Intent(inventory_screen2.this, inventory_seed.class);
             intent.putExtra("item_name", itemName);
             intent.putExtra("item_quantity", itemData.getOrDefault(itemName, 0));
-            startActivity(intent);
+            startActivityForResult(intent, 1); // 请求码为 1
         });
     }
-}
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == 1 && resultCode == RESULT_OK && data != null) {
+            // 接收来自 inventory_seed 的更新数据
+            String itemName = data.getStringExtra("item_name");
+            int updatedQuantity = data.getIntExtra("updated_quantity", -1);
+
+            if (itemName != null && updatedQuantity != -1) {
+                // 更新 itemData
+                itemData.put(itemName, updatedQuantity);
+                Toast.makeText(this, itemName + " quantity updated to: " + updatedQuantity, Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        ImageView warehouseButton = findViewById(R.id.warehouse);
+        warehouseButton.setOnClickListener(v -> {
+            Intent intent = new Intent(inventory_screen2.this, Inventory_Management.class);
+            startActivity(intent);
+            finish(); // 关闭当前页面
+        });
+    }}

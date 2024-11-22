@@ -18,19 +18,27 @@
 
         <TextView
             android:id="@+id/topBarTitle"
-            android:layout_width="wrap_content"
+            android:layout_width="318dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:text="Seed Inventory"
             android:textColor="#FFFFFF"
             android:textSize="18sp"
             android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/menu"
+            android:layout_width="182dp"
+            android:layout_height="25dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/menu" />
+
     </LinearLayout>
 
 
     <ScrollView
         android:layout_width="402dp"
-        android:layout_height="503dp"
+        android:layout_height="589dp"
         app:layout_constraintBottom_toTopOf="@id/bottomNavBar"
         app:layout_constraintTop_toBottomOf="@id/topBar"
         app:layout_constraintVertical_bias="0.901"
@@ -43,17 +51,19 @@
             android:columnCount="2"
             android:padding="8dp">
 
+
             <ImageView
                 android:id="@+id/Tomato"
                 android:layout_width="0dp"
                 android:layout_height="150dp"
+                android:layout_row="0"
                 android:layout_rowWeight="1"
+                android:layout_column="0"
                 android:layout_columnWeight="1"
                 android:layout_margin="4dp"
                 android:adjustViewBounds="true"
                 android:scaleType="centerCrop"
                 app:srcCompat="@drawable/tomato" />
-
 
             <ImageView
                 android:id="@+id/Potato"
@@ -168,17 +178,4 @@
             android:src="@drawable/icon_map" />
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="There are the following crop seeds in our warehouse"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.101" />
 </androidx.constraintlayout.widget.ConstraintLayout>
