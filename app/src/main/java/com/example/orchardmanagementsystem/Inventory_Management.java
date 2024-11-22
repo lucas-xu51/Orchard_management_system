@@ -46,6 +46,15 @@ public class Inventory_Management extends AppCompatActivity {
         setCropClickListener(R.id.Cabbage, "Cabbage");
         setCropClickListener(R.id.Carrot, "Carrot");
         setCropClickListener(R.id.Pineapple, "Pineapple");
+        setCropClickListener(R.id.Shovel, "Shovel");
+        setCropClickListener(R.id.Hoe, "Hoe");
+        setCropClickListener(R.id.fertilizer, "Fertilizer");
+        setCropClickListener(R.id.Pesticides, "Pesticide");
+
+        // 设置返回按钮
+        ImageView backButton = findViewById(R.id.imageView2);
+        backButton.setOnClickListener(v -> finish());
+
     }
 
     private void setCropClickListener(int imageViewId, String cropName) {
@@ -68,6 +77,10 @@ public class Inventory_Management extends AppCompatActivity {
         cropQuantities.put("Cabbage", 2);
         cropQuantities.put("Carrot", 4);
         cropQuantities.put("Pineapple", 6);
+        cropQuantities.put("Shovel", 8);
+        cropQuantities.put("Hoe", 10);
+        cropQuantities.put("Fertilizer", 14);
+        cropQuantities.put("Pesticide", 16);
     }
 
     @Override

@@ -30,6 +30,10 @@ public class inventory_screen2 extends AppCompatActivity {
         itemData.put("Cabbage", 2);
         itemData.put("Carrot", 4);
         itemData.put("Pineapple", 6);
+        itemData.put("Shovel", 8);
+        itemData.put("Hoe", 10);
+        itemData.put("Fertilizer", 14);
+        itemData.put("Pesticide", 16);
 
         // 设置返回按钮
         ImageView backButton = findViewById(R.id.imageView2);
@@ -70,6 +74,10 @@ public class inventory_screen2 extends AppCompatActivity {
         setupClickListener(R.id.cabbage_layout, "Cabbage");
         setupClickListener(R.id.carrot_layout, "Carrot");
         setupClickListener(R.id.pineapple_layout, "Pineapple");
+        setupClickListener(R.id.tool1, "Shovel");
+        setupClickListener(R.id.tool2, "Hoe");
+        setupClickListener(R.id.fertilizer, "Fertilizer");
+        setupClickListener(R.id.pesticide, "Pesticide");
     }
 
     private void setupClickListener(int layoutId, String itemName) {
@@ -98,10 +106,4 @@ public class inventory_screen2 extends AppCompatActivity {
             }
         }
 
-        ImageView warehouseButton = findViewById(R.id.warehouse);
-        warehouseButton.setOnClickListener(v -> {
-            Intent intent = new Intent(inventory_screen2.this, Inventory_Management.class);
-            startActivity(intent);
-            finish(); // 关闭当前页面
-        });
     }}
