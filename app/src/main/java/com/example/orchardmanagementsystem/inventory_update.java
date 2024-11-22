@@ -20,6 +20,10 @@ public class inventory_update extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inventory_update);
 
+        // 设置返回按钮
+        ImageView backButton1 = findViewById(R.id.imageView8);
+        backButton1.setOnClickListener(v -> finish());
+
         // 获取传递的数据
         itemName = getIntent().getStringExtra("item_name");
         currentQuantity = getIntent().getIntExtra("item_quantity", 0);
@@ -66,6 +70,8 @@ public class inventory_update extends AppCompatActivity {
             startActivity(intent);
             finish(); // 关闭当前页面
         });
+
+
     }
 
 }
