@@ -16,9 +16,6 @@
             android:name=".inventory_update"
             android:exported="false" />
         <activity
-            android:name=".inventory_add"
-            android:exported="false" />
-        <activity
             android:name=".inventory_seed"
             android:exported="false" />
         <activity
@@ -48,6 +45,11 @@
         <activity
             android:name=".HistoryActivity"
             android:exported="true" />
+
+        <activity
+            android:name=".Irrigation_addNewItem"
+            android:exported="true" />
+
     </application>
 
 </manifest>

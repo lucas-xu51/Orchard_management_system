@@ -16,6 +16,7 @@ public class mainActivity extends AppCompatActivity {
 
         // 获取button
         Button firstBlock = findViewById(R.id.firstBlock);
+        Button secondBlock = findViewById(R.id.secondBlock);
         Button thirdBlock = findViewById(R.id.thirdBlock);
 
         // 设置点击事件
@@ -24,6 +25,15 @@ public class mainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // 点击按钮后跳转到 CropMonitoringActivity
                 Intent intent = new Intent(mainActivity.this, crop_monitoring_Activity.class);
+                startActivity(intent);
+            }
+        });
+
+        secondBlock.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 点击按钮后跳转到 CropMonitoringActivity
+                Intent intent = new Intent(mainActivity.this, Irrigation_addNewItem.class);
                 startActivity(intent);
             }
         });
