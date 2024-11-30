@@ -7,41 +7,56 @@
     android:layout_height="match_parent"
     tools:context=".LocationFarmActivity">
 
+    <!-- 顶部栏 -->
     <LinearLayout
         android:id="@+id/topBar"
         android:layout_width="match_parent"
         android:layout_height="56dp"
+        android:orientation="horizontal"
         android:background="#5C4033"
         android:gravity="center_vertical"
-        android:orientation="horizontal"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
+        <ImageButton
             android:id="@+id/backButton"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="8dp"
+            android:layout_width="35dp"
+            android:layout_height="38dp"
+            android:layout_marginStart="8dp"
+            android:background="?android:attr/selectableItemBackground"
             android:contentDescription="Back"
-            app:srcCompat="@drawable/icon_back"
-            android:visibility="visible" />
+            android:scaleType="fitCenter"
+            android:src="@drawable/icon_back" />
 
-        <!-- Title -->
         <TextView
             android:id="@+id/topBarTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="location of farm"
+            android:textSize="18sp"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/topBarTitle1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
             android:layout_weight="1"
-            android:gravity="center"
-            android:text="Locations Of Farms"
-            android:textColor="#FFFFFF"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textSize="18sp"/>
+
+        <ImageButton
+            android:id="@+id/menuButton"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginEnd="8dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:contentDescription="Menu"
+            android:src="@drawable/icon_home"
+            android:scaleType="fitCenter" />
     </LinearLayout>
 
-
-    <!-- Map Container -->
+    <!-- 地图容器 -->
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/mapContainer"
         android:name="com.google.android.gms.maps.SupportMapFragment"
@@ -52,7 +67,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Bottom Navigation Bar -->
+    <!-- 底部导航栏 -->
     <LinearLayout
         android:id="@+id/bottomNavBar"
         android:layout_width="match_parent"
@@ -63,7 +78,7 @@
         android:padding="10dp"
         app:layout_constraintBottom_toBottomOf="parent">
 
-        <!-- Navigation Buttons -->
+        <!-- 导航按钮 -->
         <ImageButton
             android:id="@+id/crop"
             android:layout_width="0dp"
