@@ -21,4 +21,3 @@ dependencyResolutionManagement {
 
 rootProject.name = "Orchard management system"
 include(":app")
- 

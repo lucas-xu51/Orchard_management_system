@@ -1,9 +1,9 @@
-<LinearLayout
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:layout_height="match_parent">
 
     <!-- Top Bar -->
     <LinearLayout
@@ -12,7 +12,8 @@
         android:layout_height="56dp"
         android:orientation="horizontal"
         android:background="#5C4033"
-        android:gravity="center_vertical">
+        android:gravity="center_vertical"
+        app:layout_constraintTop_toTopOf="parent">
 
         <!-- Back Button -->
         <ImageButton
@@ -41,6 +42,7 @@
             android:id="@+id/topBarTitle1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:layout_weight="1"
             android:textSize="18sp" />
 
@@ -56,63 +58,36 @@
             android:src="@drawable/icon_home" />
     </LinearLayout>
 
+    <!-- Crop Image -->
+    <ImageView
+        android:id="@+id/cropImage"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/tomato"
+        app:layout_constraintTop_toBottomOf="@id/topBar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
     <!-- Calendar View -->
     <CalendarView
         android:id="@+id/calendarView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp" />
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/cropImage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Row 1: Sow and Reap Buttons -->
-    <LinearLayout
-        android:orientation="horizontal"
+    <!-- Check Items Button -->
+    <Button
+        android:id="@+id/checkItemsButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp">
+        android:layout_margin="16dp"
+        android:text="Check Items"
+        app:layout_constraintTop_toBottomOf="@id/calendarView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
 
-        <Button
-            android:id="@+id/sowButton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Sow"
-            android:textAllCaps="false"
-            android:textSize="16sp" />
-
-        <Button
-            android:id="@+id/reapButton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Reap"
-            android:textAllCaps="false"
-            android:textSize="16sp" />
-    </LinearLayout>
-
-    <!-- Row 2: Watering and Fertilize Buttons -->
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp">
-
-        <Button
-            android:id="@+id/wateringButton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Watering"
-            android:textAllCaps="false"
-            android:textSize="16sp" />
-
-        <Button
-            android:id="@+id/fertilizeButton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Fertilize"
-            android:textAllCaps="false"
-            android:textSize="16sp" />
-    </LinearLayout>
-
-</LinearLayout>

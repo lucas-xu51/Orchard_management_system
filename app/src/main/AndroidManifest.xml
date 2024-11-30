@@ -13,6 +13,18 @@
         android:theme="@style/Theme.OrchardManagementSystem"
         tools:targetApi="31">
         <activity
+            android:name=".TasksForDateActivity"
+            android:exported="false" />
+        <activity
+            android:name=".checkItem"
+            android:exported="false" />
+        <activity
+            android:name=".SetTask"
+            android:exported="false" />
+        <activity
+            android:name=".Task"
+            android:exported="false" />
+        <activity
             android:name=".inventory_update"
             android:exported="false" />
         <activity
@@ -45,11 +57,9 @@
         <activity
             android:name=".HistoryActivity"
             android:exported="true" />
-
         <activity
             android:name=".Irrigation_addNewItem"
             android:exported="true" />
-
     </application>
 
 </manifest>

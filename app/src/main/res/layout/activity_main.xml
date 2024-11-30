@@ -34,7 +34,7 @@
         android:layout_height="0dp"
         android:background="@android:color/white"
         android:gravity="center"
-        android:text="Block 2"
+        android:text="Task"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         android:layout_marginTop="500dp"
@@ -78,5 +78,19 @@
         app:layout_constraintTop_toBottomOf="@id/secondBlock"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewTasks"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="8dp"
+        app:layout_constraintTop_toBottomOf="@id/firstBlock"
+        app:layout_constraintBottom_toTopOf="@id/thirdBlock"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:listitem="@layout/item_task" />
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
