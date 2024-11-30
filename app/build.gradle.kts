@@ -1,5 +1,4 @@
 plugins {
-
     alias(libs.plugins.android.application)
 }
 
@@ -36,11 +35,12 @@ dependencies {
 
     implementation(libs.appcompat)
     implementation(libs.material)
+    implementation("com.google.android.gms:play-services-maps:19.0.0")
     implementation(libs.activity)
     implementation(libs.constraintlayout)
-    implementation("com.applandeo:material-calendar-view:1.9.2")
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+
 }
 
