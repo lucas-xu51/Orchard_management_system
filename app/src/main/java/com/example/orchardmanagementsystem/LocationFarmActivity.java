@@ -27,14 +27,34 @@ public class LocationFarmActivity extends FragmentActivity implements OnMapReady
         super.onCreate(savedInstanceState);
         setContentView(R.layout.location_farm);
 
+        ImageButton btnCrop = findViewById(R.id.crop);
+        ImageButton btnWarehouse = findViewById(R.id.warehouse);
+        ImageButton btnCalendar = findViewById(R.id.calendar);
+        ImageButton btnMap = findViewById(R.id.map);
+
+        btnCrop.setOnClickListener(v -> {
+            // 跳转到 Crop Monitoring 页面
+            Intent cropIntent = new Intent(LocationFarmActivity.this, crop_monitoring_Activity.class);
+            startActivity(cropIntent);
+        });
+
+        btnWarehouse.setOnClickListener(v -> {
+            // 跳转到 Inventory Management 页面
+            Intent warehouseIntent = new Intent(LocationFarmActivity.this, Inventory_Management.class);
+            startActivity(warehouseIntent);
+        });
+
+        btnCalendar.setOnClickListener(v -> {
+            // 跳转到 Task 页面
+            Intent calendarIntent = new Intent(LocationFarmActivity.this, Task.class);
+            startActivity(calendarIntent);
+        });
+
+
+
         // Back button functionality
         ImageView backButton = findViewById(R.id.backButton);
-        backButton.setOnClickListener(v -> {
-            Intent intent = new Intent(LocationFarmActivity.this, mainActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(intent);
-            finish();
-        });
+        backButton.setOnClickListener(v -> finish());
 
         ImageButton menuButton = findViewById(R.id.menuButton);
         menuButton.setOnClickListener(v -> {

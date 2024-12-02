@@ -65,6 +65,31 @@ public class Inventory_Management extends AppCompatActivity {
         ImageButton backButton = findViewById(R.id.backButton);
         backButton.setOnClickListener(v -> finish());
 
+        ImageButton btnCrop = findViewById(R.id.crop);
+        ImageButton btnWarehouse = findViewById(R.id.warehouse);
+        ImageButton btnCalendar = findViewById(R.id.calendar);
+        ImageButton btnMap = findViewById(R.id.map);
+
+        btnCrop.setOnClickListener(v -> {
+            // 跳转到 Crop Monitoring 页面
+            Intent cropIntent = new Intent(Inventory_Management.this, crop_monitoring_Activity.class);
+            startActivity(cropIntent);
+        });
+
+
+
+        btnCalendar.setOnClickListener(v -> {
+            // 跳转到 Task 页面
+            Intent calendarIntent = new Intent(Inventory_Management.this, Task.class);
+            startActivity(calendarIntent);
+        });
+
+        btnMap.setOnClickListener(v -> {
+            // 跳转到 LocationFarmActivity 页面
+            Intent mapIntent = new Intent(Inventory_Management.this, LocationFarmActivity.class);
+            startActivity(mapIntent);
+        });
+
     }
 
     private void setCropClickListener(int imageViewId, String cropName) {

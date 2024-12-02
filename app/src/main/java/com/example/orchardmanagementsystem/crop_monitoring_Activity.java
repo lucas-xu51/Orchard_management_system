@@ -21,6 +21,31 @@ public class crop_monitoring_Activity extends AppCompatActivity {
         setCropClickListener(R.id.cabbage, "Cabbage");
         setCropClickListener(R.id.carrot, "Carrot");
         setCropClickListener(R.id.pineapple, "Pineapple");
+        ImageButton btnCrop = findViewById(R.id.crop);
+        ImageButton btnWarehouse = findViewById(R.id.warehouse);
+        ImageButton btnCalendar = findViewById(R.id.calendar);
+        ImageButton btnMap = findViewById(R.id.map);
+
+
+
+        btnWarehouse.setOnClickListener(v -> {
+            // 跳转到 Inventory Management 页面
+            Intent warehouseIntent = new Intent(crop_monitoring_Activity.this, Inventory_Management.class);
+            startActivity(warehouseIntent);
+        });
+
+        btnCalendar.setOnClickListener(v -> {
+            // 跳转到 Task 页面
+            Intent calendarIntent = new Intent(crop_monitoring_Activity.this, Task.class);
+            startActivity(calendarIntent);
+        });
+
+        btnMap.setOnClickListener(v -> {
+            // 跳转到 LocationFarmActivity 页面
+            Intent mapIntent = new Intent(crop_monitoring_Activity.this, LocationFarmActivity.class);
+            startActivity(mapIntent);
+        });
+
 
         ImageButton backButton = findViewById(R.id.backButton);
         backButton.setOnClickListener(v -> finish());

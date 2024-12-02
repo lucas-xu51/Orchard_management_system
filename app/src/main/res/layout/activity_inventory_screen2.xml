@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
+    android:background="@drawable/background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".inventory_screen2">
@@ -87,7 +88,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginBottom="8dp"
-                android:background="#FFFFFF"
+                android:background="#80FFFFFF"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:padding="8dp">
@@ -113,7 +114,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginBottom="8dp"
-                android:background="#FFFFFF"
+                android:background="#80FFFFFF"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:padding="8dp">
@@ -138,7 +139,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginBottom="8dp"
-                android:background="#FFFFFF"
+                android:background="#80FFFFFF"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:padding="8dp">
@@ -163,7 +164,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginBottom="8dp"
-                android:background="#FFFFFF"
+                android:background="#80FFFFFF"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:padding="8dp">
@@ -188,7 +189,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginBottom="8dp"
-                android:background="#FFFFFF"
+                android:background="#80FFFFFF"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:padding="8dp">
@@ -213,7 +214,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginBottom="8dp"
-                android:background="#FFFFFF"
+                android:background="#80FFFFFF"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:padding="8dp">
@@ -247,7 +248,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginBottom="8dp"
-                android:background="#FFFFFF"
+                android:background="#80FFFFFF"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:padding="8dp">
@@ -273,7 +274,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginBottom="8dp"
-                android:background="#FFFFFF"
+                android:background="#80FFFFFF"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:padding="8dp">
@@ -309,7 +310,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginBottom="8dp"
-                android:background="#FFFFFF"
+                android:background="#80FFFFFF"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:padding="8dp">
@@ -334,7 +335,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginBottom="8dp"
-                android:background="#FFFFFF"
+                android:background="#80FFFFFF"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:padding="8dp">

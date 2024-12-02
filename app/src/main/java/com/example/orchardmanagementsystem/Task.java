@@ -21,14 +21,35 @@ public class Task extends AppCompatActivity {
         setCropClickListener(R.id.carrot, "Carrot");
         setCropClickListener(R.id.pineapple, "Pineapple");
 
+        ImageButton btnCrop = findViewById(R.id.crop);
+        ImageButton btnWarehouse = findViewById(R.id.warehouse);
+        ImageButton btnCalendar = findViewById(R.id.calendar);
+        ImageButton btnMap = findViewById(R.id.map);
+
+        btnCrop.setOnClickListener(v -> {
+            // 跳转到 Crop Monitoring 页面
+            Intent cropIntent = new Intent(Task.this, crop_monitoring_Activity.class);
+            startActivity(cropIntent);
+        });
+
+        btnWarehouse.setOnClickListener(v -> {
+            // 跳转到 Inventory Management 页面
+            Intent warehouseIntent = new Intent(Task.this, Inventory_Management.class);
+            startActivity(warehouseIntent);
+        });
+
+
+
+        btnMap.setOnClickListener(v -> {
+            // 跳转到 LocationFarmActivity 页面
+            Intent mapIntent = new Intent(Task.this, LocationFarmActivity.class);
+            startActivity(mapIntent);
+        });
+
         ImageButton btnBack = findViewById(R.id.backButton);
         ImageButton btnMenu = findViewById(R.id.menuButton);
 
-        // Add click listener for Back Button
-        btnBack.setOnClickListener(v -> {
-            Intent intent = new Intent(Task.this, mainActivity.class);
-            startActivity(intent);
-        });
+        btnBack.setOnClickListener(v -> finish());
         btnMenu.setOnClickListener(v -> {
             Intent intent = new Intent(Task.this, mainActivity.class);
             startActivity(intent);
