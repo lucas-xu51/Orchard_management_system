@@ -2,6 +2,8 @@ package com.example.orchardmanagementsystem;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import androidx.activity.EdgeToEdge;
@@ -32,11 +34,19 @@ public class Inventory_Management extends AppCompatActivity {
         // 初始化默认数据
         initializeDefaultQuantities();
 
-        // 绑定 menu 图片的点击事件
-        ImageView menuImageView = findViewById(R.id.menu);
-        menuImageView.setOnClickListener(v -> {
+        // 绑定 toggleListMode 按钮的点击事件
+        Button toggleListModeButton = findViewById(R.id.menu);
+        toggleListModeButton.setOnClickListener(v -> {
+            // 启动新的 Activity（inventory_screen2）
             Intent intent = new Intent(Inventory_Management.this, inventory_screen2.class);
             startActivity(intent);
+        });
+
+        ImageButton menuButton = findViewById(R.id.menuButton);
+        menuButton.setOnClickListener(v -> {
+            Intent intent = new Intent(Inventory_Management.this, mainActivity.class);
+            startActivity(intent);
+            finish(); // Optional: Close current activity after starting MainActivity
         });
 
         // 为每个作物设置点击事件
@@ -52,7 +62,7 @@ public class Inventory_Management extends AppCompatActivity {
         setCropClickListener(R.id.Pesticides, "Pesticide");
 
         // 设置返回按钮
-        ImageView backButton = findViewById(R.id.imageView2);
+        ImageButton backButton = findViewById(R.id.backButton);
         backButton.setOnClickListener(v -> finish());
 
     }

@@ -3,6 +3,7 @@ package com.example.orchardmanagementsystem;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,7 +30,7 @@ public class inventory_seed extends AppCompatActivity {
         quantityTextView = findViewById(R.id.quantity);
         Button updateButton = findViewById(R.id.updateButton);
         Button confirmButton = findViewById(R.id.confirmButton);
-        ImageView backButton = findViewById(R.id.imageView4);
+        ImageView backButton = findViewById(R.id.backButton);
 
         // 显示当前数据
         nameTextView.setText("Item: " + itemName);
@@ -37,6 +38,13 @@ public class inventory_seed extends AppCompatActivity {
 
         // 返回按钮逻辑
         backButton.setOnClickListener(v -> finish());
+
+        ImageButton menuButton = findViewById(R.id.menuButton);
+        menuButton.setOnClickListener(v -> {
+            Intent intent = new Intent(inventory_seed.this, mainActivity.class);
+            startActivity(intent);
+            finish(); // Optional: Close current activity after starting MainActivity
+        });
 
         // 更新按钮逻辑
         updateButton.setOnClickListener(v -> {

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,8 +22,15 @@ public class inventory_update extends AppCompatActivity {
         setContentView(R.layout.activity_inventory_update);
 
         // 设置返回按钮
-        ImageView backButton1 = findViewById(R.id.imageView8);
+        ImageView backButton1 = findViewById(R.id.backButton);
         backButton1.setOnClickListener(v -> finish());
+
+        ImageButton menuButton = findViewById(R.id.menuButton);
+        menuButton.setOnClickListener(v -> {
+            Intent intent = new Intent(inventory_update.this, mainActivity.class);
+            startActivity(intent);
+            finish(); // Optional: Close current activity after starting MainActivity
+        });
 
         // 获取传递的数据
         itemName = getIntent().getStringExtra("item_name");
@@ -70,8 +78,6 @@ public class inventory_update extends AppCompatActivity {
             startActivity(intent);
             finish(); // 关闭当前页面
         });
-
-
     }
 
 }

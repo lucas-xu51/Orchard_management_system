@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import androidx.fragment.app.FragmentActivity;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -19,6 +20,7 @@ public class LocationFarmActivity extends FragmentActivity implements OnMapReady
 
     private GoogleMap mMap;
     private HashMap<Marker, String> markerDescriptions = new HashMap<>();
+    private Marker lastClickedMarker = null; // Track last clicked marker
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +34,13 @@ public class LocationFarmActivity extends FragmentActivity implements OnMapReady
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
             finish();
+        });
+
+        ImageButton menuButton = findViewById(R.id.menuButton);
+        menuButton.setOnClickListener(v -> {
+            Intent intent = new Intent(LocationFarmActivity.this, mainActivity.class);
+            startActivity(intent);
+            finish(); // Optional: Close current activity after starting MainActivity
         });
 
         // Load the map
@@ -79,8 +88,12 @@ public class LocationFarmActivity extends FragmentActivity implements OnMapReady
 
         // Set marker click listener
         mMap.setOnMarkerClickListener(marker -> {
-            showEditDescriptionDialog(marker); // Allow user to edit description
-            marker.showInfoWindow(); // Show the info window
+            if (marker.equals(lastClickedMarker)) {
+                showEditDescriptionDialog(marker); // If clicked on the same marker, show dialog
+            } else {
+                marker.showInfoWindow(); // If clicked on a different marker, show info window
+            }
+            lastClickedMarker = marker; // Update last clicked marker
             return true;
         });
 

@@ -2,6 +2,7 @@ package com.example.orchardmanagementsystem;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -36,8 +37,15 @@ public class inventory_screen2 extends AppCompatActivity {
         itemData.put("Pesticide", 16);
 
         // 设置返回按钮
-        ImageView backButton = findViewById(R.id.imageView2);
+        ImageButton backButton = findViewById(R.id.backButton);
         backButton.setOnClickListener(v -> finish());
+
+        ImageButton menuButton = findViewById(R.id.menuButton);
+        menuButton.setOnClickListener(v -> {
+            Intent intent = new Intent(inventory_screen2.this, mainActivity.class);
+            startActivity(intent);
+            finish(); // Optional: Close current activity after starting MainActivity
+        });
 
         // 设置每个 LinearLayout 的点击事件
         setupItemClickListeners();
