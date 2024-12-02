@@ -58,7 +58,6 @@ public class inventory_update extends AppCompatActivity {
                 resultIntent.putExtra("updated_quantity", updatedQuantity);
                 setResult(RESULT_OK, resultIntent);
 
-                Toast.makeText(this, "Quantity confirm: " + updatedQuantity, Toast.LENGTH_SHORT).show();
                 finish();
             } else {
                 Toast.makeText(this, "Please enter a valid quantity", Toast.LENGTH_SHORT).show();
