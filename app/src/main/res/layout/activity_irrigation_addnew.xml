@@ -3,9 +3,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:background="@drawable/background"
+    android:padding="0dp">
 
     <!-- Top Bar -->
+    <!-- 顶部栏 -->
     <LinearLayout
         android:id="@+id/topBar"
         android:layout_width="match_parent"
@@ -14,46 +16,43 @@
         android:background="#5C4033"
         android:gravity="center_vertical">
 
-        <!-- Back Button -->
         <ImageButton
             android:id="@+id/backButton"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_width="35dp"
+            android:layout_height="38dp"
             android:layout_marginStart="8dp"
             android:background="?android:attr/selectableItemBackground"
             android:contentDescription="Back"
             android:scaleType="fitCenter"
             android:src="@drawable/icon_back" />
 
-        <!-- Title -->
         <TextView
             android:id="@+id/topBarTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:text="Tasks"
+            android:text="add new events"
             android:textSize="18sp"
             android:textColor="#FFFFFF"
             android:textStyle="bold" />
 
-        <!-- Spacer (optional, aligns buttons to the right) -->
         <TextView
             android:id="@+id/topBarTitle1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:layout_weight="1"
-            android:textSize="18sp" />
+            android:textSize="18sp"/>
 
-        <!-- Menu Button -->
         <ImageButton
             android:id="@+id/menuButton"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
             android:layout_marginEnd="8dp"
             android:background="?android:attr/selectableItemBackground"
             android:contentDescription="Menu"
-            android:scaleType="fitCenter"
-            android:src="@drawable/icon_home" />
+            android:src="@drawable/icon_home"
+            android:scaleType="fitCenter" />
     </LinearLayout>
 
     <!-- Calendar View -->
@@ -61,14 +60,19 @@
         android:id="@+id/calendarView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp" />
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="#10000000"/>
 
     <!-- Row 1: Sow and Reap Buttons -->
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp">
+        android:layout_marginBottom="16dp"
+        android:weightSum="2"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp">
 
         <Button
             android:id="@+id/sowButton"
@@ -76,17 +80,21 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Sow"
+            android:backgroundTint="#5C4033"
             android:textAllCaps="false"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:layout_marginEnd="8dp" />
 
         <Button
             android:id="@+id/reapButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:backgroundTint="#5C4033"
             android:text="Reap"
             android:textAllCaps="false"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:layout_marginStart="8dp" />
     </LinearLayout>
 
     <!-- Row 2: Watering and Fertilize Buttons -->
@@ -94,25 +102,32 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp">
+        android:layout_marginBottom="16dp"
+        android:weightSum="2"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp">
 
         <Button
             android:id="@+id/wateringButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:backgroundTint="#5C4033"
             android:text="Watering"
             android:textAllCaps="false"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:layout_marginEnd="8dp" />
 
         <Button
             android:id="@+id/fertilizeButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:backgroundTint="#5C4033"
             android:text="Fertilize"
             android:textAllCaps="false"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:layout_marginStart="8dp" />
     </LinearLayout>
 
 </LinearLayout>

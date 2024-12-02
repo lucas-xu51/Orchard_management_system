@@ -62,7 +62,7 @@ public class mainActivity extends AppCompatActivity {
         secondBlock.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(mainActivity.this, Irrigation_addNewItem.class);
+                Intent intent = new Intent(mainActivity.this, Task.class);
                 startActivity(intent);
             }
         });

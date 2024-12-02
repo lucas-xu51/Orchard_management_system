@@ -4,6 +4,7 @@ package com.example.orchardmanagementsystem;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -20,6 +21,16 @@ public class crop_monitoring_Activity extends AppCompatActivity {
         setCropClickListener(R.id.cabbage, "Cabbage");
         setCropClickListener(R.id.carrot, "Carrot");
         setCropClickListener(R.id.pineapple, "Pineapple");
+
+        ImageButton backButton = findViewById(R.id.backButton);
+        backButton.setOnClickListener(v -> finish());
+
+        ImageButton menuButton = findViewById(R.id.menuButton);
+        menuButton.setOnClickListener(v -> {
+            Intent intent = new Intent(crop_monitoring_Activity.this, mainActivity.class);
+            startActivity(intent);
+            finish(); // Optional: Close current activity after starting MainActivity
+        });
     }
 
     private void setCropClickListener(int imageViewId, String cropName) {

@@ -21,8 +21,8 @@
 
         <ImageButton
             android:id="@+id/backButton"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_width="35dp"
+            android:layout_height="38dp"
             android:layout_marginStart="8dp"
             android:background="?android:attr/selectableItemBackground"
             android:contentDescription="Back"
@@ -34,7 +34,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:text="Tasks"
+            android:text="edit daily events"
             android:textSize="18sp"
             android:textColor="#FFFFFF"
             android:textStyle="bold" />
@@ -49,13 +49,13 @@
 
         <ImageButton
             android:id="@+id/menuButton"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
             android:layout_marginEnd="8dp"
             android:background="?android:attr/selectableItemBackground"
             android:contentDescription="Menu"
-            android:scaleType="fitCenter"
-            android:src="@drawable/icon_home" />
+            android:src="@drawable/icon_home"
+            android:scaleType="fitCenter" />
     </LinearLayout>
 
     <CalendarView
@@ -65,7 +65,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.15" />
+        app:layout_constraintVertical_bias="0.15"
+        android:background="#10000000"/>
 
     <!-- RecyclerView for task list -->
 
@@ -88,6 +89,7 @@
         android:text="clear all tasks"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:backgroundTint="#5C4033"
         app:layout_constraintHorizontal_bias="0.877"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -99,6 +101,7 @@
         android:text="+"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:backgroundTint="#5C4033"
         app:layout_constraintHorizontal_bias="0.171"
         app:layout_constraintStart_toStartOf="parent" />
 
