@@ -2,20 +2,25 @@ package com.example.orchardmanagementsystem;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.CalendarView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Button;
+import android.app.AlertDialog;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.List;
 
 public class SetTask extends AppCompatActivity {
 
     private String selectedDate;
     private String cropName;
     private ImageView cropImageView;
+    private HashMap<String, HashMap<String, List<Irrigation_addNewItem.Event>>> eventsMap = EventManager.getInstance().getEventsMap();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +49,9 @@ public class SetTask extends AppCompatActivity {
         // Update selectedDate when the user picks a new date
         calendarView.setOnDateChangeListener((view, year, month, dayOfMonth) -> {
             selectedDate = year + "-" + (month + 1) + "-" + dayOfMonth;
+
+            // Show events for the selected date
+            showEventDialog(selectedDate);
         });
 
         // Navigate to the "Tasks for Date" screen
@@ -100,7 +108,28 @@ public class SetTask extends AppCompatActivity {
         // Set the image resource
         cropImageView.setImageResource(imageResId);
     }
+
+    // Show event dialog for the selected date
+    // Show event dialog for the selected date
+    private void showEventDialog(String dateKey) {
+        HashMap<String, List<Irrigation_addNewItem.Event>> cropEventsMap = eventsMap.get(cropName);
+
+        if (cropEventsMap != null && cropEventsMap.containsKey(dateKey)) {
+            List<Irrigation_addNewItem.Event> events = cropEventsMap.get(dateKey);
+            StringBuilder eventsDetails = new StringBuilder();
+            for (Irrigation_addNewItem.Event event : events) {
+                eventsDetails.append(event.getEventType()).append(": ").append(event.getComment()).append("\n");
+            }
+
+            // Show the event details in a dialog
+            new AlertDialog.Builder(this)
+                    .setTitle("Event Details for " + dateKey)
+                    .setMessage(eventsDetails.toString())
+                    .setPositiveButton("OK", null)
+                    .show();
+        } else {
+            // Log that there are no events for debugging, but don't show a dialog
+            Log.d("SetTask", "No events for this date: " + dateKey);
+        }
+    }
 }
-
-
-
