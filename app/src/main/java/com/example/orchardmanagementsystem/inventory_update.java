@@ -58,7 +58,7 @@ public class inventory_update extends AppCompatActivity {
                 resultIntent.putExtra("updated_quantity", updatedQuantity);
                 setResult(RESULT_OK, resultIntent);
 
-                Toast.makeText(this, "Quantity updated to: " + updatedQuantity, Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Quantity confirm: " + updatedQuantity, Toast.LENGTH_SHORT).show();
                 finish();
             } else {
                 Toast.makeText(this, "Please enter a valid quantity", Toast.LENGTH_SHORT).show();
@@ -68,7 +68,6 @@ public class inventory_update extends AppCompatActivity {
         // 返回按钮逻辑
         backButton.setOnClickListener(v -> {
             setResult(RESULT_CANCELED);
-            Toast.makeText(this, "Update canceled by user", Toast.LENGTH_SHORT).show();
             finish();
         });
 
