@@ -22,7 +22,7 @@
             android:layout_width="35dp"
             android:layout_height="38dp"
             android:layout_marginStart="8dp"
-            android:background="?android:attr/selectableItemBackground"
+            android:background="#5A3F33"
             android:contentDescription="Back"
             android:scaleType="fitCenter"
             android:src="@drawable/icon_back" />
