@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.EditText;
@@ -28,6 +29,7 @@ public class Irrigation_addNewItem extends AppCompatActivity {
         super.onResume();
         markDatesWithEvent(); // Refresh the calendar view
     }
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_irrigation_addnew);
@@ -37,28 +39,29 @@ public class Irrigation_addNewItem extends AppCompatActivity {
 
         // Initialize Views
         calendarView = findViewById(R.id.calendarView);
+
+        // Set calendar date change listener
         calendarView.setOnDateChangeListener((view, year, month, dayOfMonth) -> {
             Calendar calendar = Calendar.getInstance();
             calendar.set(year, month, dayOfMonth);
             String dateKey = getDateKey(calendar);
 
+            // Retrieve the events map and check if events exist for the selected crop and date
             HashMap<String, HashMap<String, List<Event>>> eventsMap = EventManager.getInstance().getEventsMap();
             if (eventsMap.containsKey(cropName) && eventsMap.get(cropName).containsKey(dateKey)) {
-                showEventDialog(dateKey);
+                showEventDialog(dateKey);  // If events exist, show the event dialog
+            } else {
+                Log.d("Irrigation_addNewItem", "No events for this date.");
             }
         });
 
-
+        // Set up navigation buttons
         ImageButton btnBack = findViewById(R.id.backButton);
         ImageButton btnMenu = findViewById(R.id.menuButton);
 
-        btnBack.setOnClickListener(v -> {
-            Intent backIntent = new Intent(Irrigation_addNewItem.this, checkItem.class);
-            backIntent.putExtra("cropName", cropName);
-            startActivity(backIntent);
-        });
 
-        // Add click listener for Menu Button
+        btnBack.setOnClickListener(v -> finish());
+
         btnMenu.setOnClickListener(v -> {
             Intent menuIntent = new Intent(Irrigation_addNewItem.this, mainActivity.class);
             startActivity(menuIntent);
@@ -74,16 +77,6 @@ public class Irrigation_addNewItem extends AppCompatActivity {
         reapButton.setOnClickListener(v -> showDatePickerDialog("Reap"));
         wateringButton.setOnClickListener(v -> showWateringOrFertilizingDialog("Watering"));
         fertilizeButton.setOnClickListener(v -> showWateringOrFertilizingDialog("Fertilize"));
-
-        // Calendar Date Click Listener
-        calendarView.setOnDateChangeListener((view, year, month, dayOfMonth) -> {
-            Calendar calendar = Calendar.getInstance();
-            calendar.set(year, month, dayOfMonth);
-            String dateKey = getDateKey(calendar);
-            if (eventsMap.containsKey(dateKey)) {
-                showEventDialog(dateKey);
-            }
-        });
     }
 
     // Show date picker for sowing and reaping
@@ -132,6 +125,7 @@ public class Irrigation_addNewItem extends AppCompatActivity {
                 .show();
     }
 
+    // Retrieve all dates for a given day of the week
     private List<String> getDatesForDay(String dayName) {
         List<String> dates = new ArrayList<>();
         Calendar calendar = Calendar.getInstance();
@@ -148,17 +142,19 @@ public class Irrigation_addNewItem extends AppCompatActivity {
         return dates;
     }
 
+    // Convert calendar date to string format (YYYY-MM-DD)
     private String getDateKey(Calendar calendar) {
         return calendar.get(Calendar.YEAR) + "-" + (calendar.get(Calendar.MONTH) + 1) + "-" + calendar.get(Calendar.DAY_OF_MONTH);
     }
 
+    // Refresh the calendar to mark dates with events
     private void markDatesWithEvent() {
         HashMap<String, HashMap<String, List<Event>>> eventsMap = EventManager.getInstance().getEventsMap();
         HashMap<String, List<Event>> cropEventsMap = eventsMap.get(cropName);
         if (cropEventsMap == null) return;
 
+        // Additional code can go here to visually mark dates with events (e.g., with a special background or marker)
     }
-
 
     // Show input dialog for adding a comment to watering or fertilizing
     private void showCommentDialog(String eventType, List<String> dates) {
@@ -194,10 +190,11 @@ public class Irrigation_addNewItem extends AppCompatActivity {
         // Add to TaskManager with cropName
         Task2 task = new Task2(event.getEventType(), event.getComment());
         TaskManager.getInstance().addTask(cropName, dateKey, task);
+
+        markDatesWithEvent();  // Refresh marked dates on calendar
     }
 
-
-    // Update showEventDialog method
+    // Show event dialog to display event details for a selected date
     private void showEventDialog(String dateKey) {
         HashMap<String, HashMap<String, List<Event>>> eventsMap = EventManager.getInstance().getEventsMap();
         HashMap<String, List<Event>> cropEventsMap = eventsMap.get(cropName);
@@ -217,7 +214,6 @@ public class Irrigation_addNewItem extends AppCompatActivity {
         }
     }
 
-
     // Event class to store event type and comment
     static class Event {
         private final String eventType;
@@ -236,10 +232,4 @@ public class Irrigation_addNewItem extends AppCompatActivity {
             return comment;
         }
     }
-    public void clearEventsForCrop(String cropName) {
-        if (eventsMap.containsKey(cropName)) {
-            eventsMap.remove(cropName);
-        }
-    }
-
 }

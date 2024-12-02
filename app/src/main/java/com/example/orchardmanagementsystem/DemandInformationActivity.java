@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -36,6 +37,16 @@ public class DemandInformationActivity extends AppCompatActivity {
         ImageButton backButton = findViewById(R.id.backButton);
         ImageButton addInfoButton = findViewById(R.id.addInfoButton);
         infoListLayout = findViewById(R.id.infoList);
+        Button addEventButton = findViewById(R.id.addEventButton);
+
+        addEventButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 跳转到 Irrigation_addNewItem Activity
+                Intent intent = new Intent(DemandInformationActivity.this, Irrigation_addNewItem.class);
+                startActivity(intent);
+            }
+        });
 
         ImageButton menuButton = findViewById(R.id.menuButton);
         menuButton.setOnClickListener(v -> {
@@ -85,7 +96,7 @@ public class DemandInformationActivity extends AppCompatActivity {
         editButton.setOnClickListener(v -> openEditInfoDialog(info, position));
 
         // 删除按钮
-        deleteButton.setOnClickListener(v -> deleteInfo(position));
+        deleteButton.setOnClickListener(v -> confirmAndDeleteInfo(position));
 
         infoListLayout.addView(itemView, 0);
     }
@@ -142,22 +153,35 @@ public class DemandInformationActivity extends AppCompatActivity {
     }
 
     /**
-     * 删除一条信息
+     * 弹出确认框并删除一条信息
      */
-    private void deleteInfo(int position) {
-        int infoCount = sharedPreferences.getInt(cropName + "_info_count", 0);
+    private void confirmAndDeleteInfo(int position) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Delete Confirmation");
+        builder.setMessage("Are you sure you want to delete this information?");
 
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        for (int i = position; i < infoCount - 1; i++) {
-            String nextInfo = sharedPreferences.getString(cropName + "_info_" + (i + 1), "");
-            editor.putString(cropName + "_info_" + i, nextInfo);
-        }
+        // 确认删除
+        builder.setPositiveButton("Yes", (dialog, which) -> {
+            int infoCount = sharedPreferences.getInt(cropName + "_info_count", 0);
 
-        editor.remove(cropName + "_info_" + (infoCount - 1));
-        editor.putInt(cropName + "_info_count", infoCount - 1);
-        editor.apply();
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            for (int i = position; i < infoCount - 1; i++) {
+                String nextInfo = sharedPreferences.getString(cropName + "_info_" + (i + 1), "");
+                editor.putString(cropName + "_info_" + i, nextInfo);
+            }
 
-        loadSavedInfo();
+            editor.remove(cropName + "_info_" + (infoCount - 1));
+            editor.putInt(cropName + "_info_count", infoCount - 1);
+            editor.apply();
+
+            loadSavedInfo();
+            Toast.makeText(this, "Information deleted", Toast.LENGTH_SHORT).show();
+        });
+
+        // 取消操作
+        builder.setNegativeButton("No", (dialog, which) -> dialog.dismiss());
+
+        builder.show();
     }
 
     /**

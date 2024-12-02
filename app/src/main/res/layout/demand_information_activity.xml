@@ -72,14 +72,29 @@
     <!-- 添加信息按钮 -->
     <ImageButton
         android:id="@+id/addInfoButton"
-        android:layout_width="341dp"
-        android:layout_height="49dp"
+        android:layout_width="82dp"
+        android:layout_height="55dp"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="16dp"
         android:background="?android:attr/selectableItemBackground"
+        android:scaleType="fitCenter"
         android:src="@drawable/icon_add"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:scaleType="fitCenter"/>
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- 右下角添加事件按钮 -->
+    <Button
+        android:id="@+id/addEventButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="Add Event"
+        android:textSize="16sp"
+        android:backgroundTint="#5C4033"
+        android:textColor="#FFFFFF"
+        android:fontFamily="sans-serif-medium"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
