@@ -129,7 +129,9 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:text="Item Name"
-            android:textSize="20sp" />
+            android:textColor="#5A3F33"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
         <!-- 唯一的 TextView ID -->
         <TextView
@@ -138,15 +140,20 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:text="Quantity: "
-            android:textSize="20sp" />
+            android:textColor="#5A3F33"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
-        <!-- 唯一的 EditText ID -->
         <EditText
             android:id="@+id/newQuantity"
             android:layout_width="306dp"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="number" />
+            android:inputType="number"
+            android:textAlignment="viewStart"
+            android:textColor="#5A3F33"
+            android:textSize="34sp"
+            android:textStyle="bold|italic" />
 
     </LinearLayout>
 

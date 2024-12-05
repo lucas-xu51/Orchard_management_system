@@ -110,7 +110,7 @@ public class inventory_screen2 extends AppCompatActivity {
             if (itemName != null && updatedQuantity != -1) {
                 // 更新 itemData
                 itemData.put(itemName, updatedQuantity);
-                Toast.makeText(this, itemName + " quantity updated to: " + updatedQuantity, Toast.LENGTH_SHORT).show();
+
             }
         }
 

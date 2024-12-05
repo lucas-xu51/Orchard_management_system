@@ -64,11 +64,12 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Item Name: "
-        android:textColor="#000000"
+        android:textColor="#593E32"
         android:textSize="24sp"
-        app:layout_constraintTop_toBottomOf="@id/topBar"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/topBar" />
 
     <!-- 显示项目数量 -->
     <TextView
@@ -77,11 +78,12 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Quantity: 0"
-        android:textColor="#000000"
+        android:textColor="#5A3F33"
         android:textSize="24sp"
-        app:layout_constraintTop_toBottomOf="@id/itemName"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/itemName" />
 
     <!-- 更新按钮 -->
     <Button

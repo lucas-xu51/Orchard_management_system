@@ -64,6 +64,7 @@ public class inventory_seed extends AppCompatActivity {
             resultIntent.putExtra("item_name", itemName);
             resultIntent.putExtra("updated_quantity", currentQuantity);
             setResult(RESULT_OK, resultIntent);
+            Toast.makeText(this, "Confirm Quantity: " + currentQuantity, Toast.LENGTH_SHORT).show();
             finish(); // 关闭当前页面
         });
     }
