@@ -74,7 +74,10 @@ public class checkItem extends AppCompatActivity {
 
         // Menu button functionality
         ImageButton btnMenu = findViewById(R.id.menuButton);
-        btnMenu.setOnClickListener(v -> finish());
+        btnMenu.setOnClickListener(v -> {
+            Intent menuIntent = new Intent(checkItem.this, mainActivity.class);
+            startActivity(menuIntent);
+        });
 
         // Initialize Buttons
         Button btnAddTask = findViewById(R.id.btnAddTask);

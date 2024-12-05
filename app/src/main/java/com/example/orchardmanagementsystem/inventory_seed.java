@@ -1,6 +1,7 @@
 package com.example.orchardmanagementsystem;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -23,7 +24,10 @@ public class inventory_seed extends AppCompatActivity {
 
         // 接收传递的数据
         itemName = getIntent().getStringExtra("item_name");
-        currentQuantity = getIntent().getIntExtra("item_quantity", 0);
+
+        // 从SharedPreferences获取当前数量
+        SharedPreferences sharedPreferences = getSharedPreferences("inventory_data", MODE_PRIVATE);
+        currentQuantity = sharedPreferences.getInt(itemName, 0); // 获取当前数量
 
         // 绑定视图
         TextView nameTextView = findViewById(R.id.itemName);
@@ -50,7 +54,6 @@ public class inventory_seed extends AppCompatActivity {
         updateButton.setOnClickListener(v -> {
             Intent intent = new Intent(inventory_seed.this, inventory_update.class);
             intent.putExtra("item_name", itemName);
-            intent.putExtra("item_quantity", currentQuantity);
             startActivityForResult(intent, 1); // 跳转到更新页面
         });
 
@@ -73,20 +76,21 @@ public class inventory_seed extends AppCompatActivity {
             if (resultCode == RESULT_OK && data != null) {
                 // 获取更新后的数量
                 currentQuantity = data.getIntExtra("updated_quantity", currentQuantity);
+
+                // 更新显示
                 quantityTextView.setText("Quantity: " + currentQuantity);
 
-                // 将更新的数据返回给上一页
-                Intent resultIntent = new Intent();
-                resultIntent.putExtra("item_name", itemName);
-                resultIntent.putExtra("updated_quantity", currentQuantity);
-                setResult(RESULT_OK, resultIntent);
+                // 保存更新的数量到SharedPreferences
+                SharedPreferences sharedPreferences = getSharedPreferences("inventory_data", MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putInt(itemName, currentQuantity);
+                editor.apply(); // 提交更新
 
                 Toast.makeText(this, "Updated Quantity: " + currentQuantity, Toast.LENGTH_SHORT).show();
             } else if (resultCode == RESULT_CANCELED) {
                 Toast.makeText(this, "Update canceled", Toast.LENGTH_SHORT).show();
             }
         }
-
     }
-
 }
+
