@@ -2,12 +2,15 @@ package com.example.orchardmanagementsystem;
 
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+
 import androidx.fragment.app.FragmentActivity;
+
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -15,18 +18,24 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+
 import java.util.HashMap;
+import java.util.Map;
 
 public class LocationFarmActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     private HashMap<Marker, String> markerDescriptions = new HashMap<>();
     private Marker lastClickedMarker = null;
+    private static final String PREFS_NAME = "MarkersPrefs";
+    private SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.location_farm);
+
+        sharedPreferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
 
         // 底部导航按钮逻辑
         ImageButton btnCrop = findViewById(R.id.crop);
@@ -75,34 +84,12 @@ public class LocationFarmActivity extends FragmentActivity implements OnMapReady
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // 添加初始点
-        LatLng kelowna = new LatLng(49.8801, -119.4436);
-        LatLng vernon = new LatLng(50.2670, -119.2720);
-        LatLng lakeCountry = new LatLng(50.0537, -119.4106);
+        // 加载已保存的标记
+        loadMarkers();
 
-        Marker kelownaMarker = mMap.addMarker(new MarkerOptions()
-                .position(kelowna)
-                .title("Kelowna Farm")
-                .snippet("Classic crops include apples, cherries, and grapes for world-class wineries."));
-
-        Marker vernonMarker = mMap.addMarker(new MarkerOptions()
-                .position(vernon)
-                .title("Vernon Farm")
-                .snippet("Classic crops include apples, cherries, grapes (wine), and peaches."));
-
-        Marker lakeCountryMarker = mMap.addMarker(new MarkerOptions()
-                .position(lakeCountry)
-                .title("Lake Country Farm")
-                .snippet("Classic crops include apples, pears, and stone fruits like peaches and apricots."));
-
-        markerDescriptions.put(kelownaMarker, kelownaMarker.getSnippet());
-        markerDescriptions.put(vernonMarker, vernonMarker.getSnippet());
-        markerDescriptions.put(lakeCountryMarker, lakeCountryMarker.getSnippet());
-
-        mMap.setOnMapLoadedCallback(() -> kelownaMarker.showInfoWindow());
         mMap.setOnMarkerClickListener(marker -> {
             if (marker.equals(lastClickedMarker)) {
-                showEditDescriptionDialog(marker);
+                showEditOrDeleteDialog(marker);
             } else {
                 marker.showInfoWindow();
             }
@@ -110,31 +97,12 @@ public class LocationFarmActivity extends FragmentActivity implements OnMapReady
             return true;
         });
 
-        // 移动到初始位置
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(lakeCountry, 10));
-        mMap.getUiSettings().setZoomControlsEnabled(true);
-
         // 设置长按监听器用于新增点
-        mMap.setOnMapLongClickListener(latLng -> showAddMarkerDialog(latLng));
-    }
+        mMap.setOnMapLongClickListener(this::showAddMarkerDialog);
 
-    private void showEditDescriptionDialog(Marker marker) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Edit Description for " + marker.getTitle());
-
-        final EditText input = new EditText(this);
-        input.setText(markerDescriptions.get(marker));
-        builder.setView(input);
-
-        builder.setPositiveButton("Save", (dialog, which) -> {
-            String newDescription = input.getText().toString();
-            marker.setSnippet(newDescription);
-            markerDescriptions.put(marker, newDescription);
-            marker.showInfoWindow();
-        });
-
-        builder.setNegativeButton("Cancel", (dialog, which) -> dialog.cancel());
-        builder.show();
+        // 默认移动到一个初始位置
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(50.0537, -119.4106), 10));
+        mMap.getUiSettings().setZoomControlsEnabled(true);
     }
 
     private void showAddMarkerDialog(LatLng latLng) {
@@ -164,10 +132,72 @@ public class LocationFarmActivity extends FragmentActivity implements OnMapReady
                     .snippet(description));
 
             markerDescriptions.put(newMarker, description);
+            saveMarker(newMarker);
             newMarker.showInfoWindow();
         });
 
         builder.setNegativeButton("Cancel", (dialog, which) -> dialog.cancel());
         builder.show();
+    }
+
+    private void showEditOrDeleteDialog(Marker marker) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Edit or Delete Marker");
+
+        final EditText input = new EditText(this);
+        input.setText(markerDescriptions.get(marker));
+        builder.setView(input);
+
+        builder.setPositiveButton("Save", (dialog, which) -> {
+            String newDescription = input.getText().toString();
+            marker.setSnippet(newDescription);
+            markerDescriptions.put(marker, newDescription);
+            saveMarker(marker);
+            marker.showInfoWindow();
+        });
+
+        builder.setNegativeButton("Delete", (dialog, which) -> {
+            markerDescriptions.remove(marker);
+            marker.remove();
+            deleteMarker(marker);
+        });
+
+        builder.setNeutralButton("Cancel", (dialog, which) -> dialog.cancel());
+        builder.show();
+    }
+
+    private void saveMarker(Marker marker) {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        String markerKey = "marker_" + marker.getPosition().latitude + "_" + marker.getPosition().longitude;
+
+        editor.putString(markerKey, marker.getTitle() + ";" + marker.getSnippet());
+        editor.apply();
+    }
+
+    private void deleteMarker(Marker marker) {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        String markerKey = "marker_" + marker.getPosition().latitude + "_" + marker.getPosition().longitude;
+
+        editor.remove(markerKey);
+        editor.apply();
+    }
+
+    private void loadMarkers() {
+        Map<String, ?> allMarkers = sharedPreferences.getAll();
+
+        for (Map.Entry<String, ?> entry : allMarkers.entrySet()) {
+            String[] markerData = ((String) entry.getValue()).split(";");
+            String title = markerData[0];
+            String snippet = markerData[1];
+            String[] latLngKey = entry.getKey().replace("marker_", "").split("_");
+            LatLng position = new LatLng(Double.parseDouble(latLngKey[0]), Double.parseDouble(latLngKey[1]));
+
+            Marker marker = mMap.addMarker(new MarkerOptions()
+                    .position(position)
+                    .title(title)
+                    .snippet(snippet));
+
+            markerDescriptions.put(marker, snippet);
+        }
     }
 }
