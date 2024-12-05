@@ -1,6 +1,7 @@
 package com.example.orchardmanagementsystem;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -34,7 +35,10 @@ public class inventory_update extends AppCompatActivity {
 
         // 获取传递的数据
         itemName = getIntent().getStringExtra("item_name");
-        currentQuantity = getIntent().getIntExtra("item_quantity", 0);
+
+        // 从 SharedPreferences 获取当前数量
+        SharedPreferences sharedPreferences = getSharedPreferences("inventory_data", MODE_PRIVATE);
+        currentQuantity = sharedPreferences.getInt(itemName, 0); // 如果没有数据则默认为 0
 
         // 初始化视图
         TextView itemNameTextView = findViewById(R.id.itemName);
@@ -54,11 +58,17 @@ public class inventory_update extends AppCompatActivity {
             if (!newQuantityString.isEmpty()) {
                 int updatedQuantity = Integer.parseInt(newQuantityString);
 
+                // 将更新后的数量保存到 SharedPreferences
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putInt(itemName, updatedQuantity);
+                editor.apply(); // 保存更新
+
+                // 返回更新数据给调用页面
                 Intent resultIntent = new Intent();
                 resultIntent.putExtra("updated_quantity", updatedQuantity);
                 setResult(RESULT_OK, resultIntent);
 
-                Toast.makeText(this, "Quantity confirm: " + updatedQuantity, Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Quantity confirmed: " + updatedQuantity, Toast.LENGTH_SHORT).show();
                 finish();
             } else {
                 Toast.makeText(this, "Please enter a valid quantity", Toast.LENGTH_SHORT).show();
@@ -78,5 +88,4 @@ public class inventory_update extends AppCompatActivity {
             finish(); // 关闭当前页面
         });
     }
-
 }
